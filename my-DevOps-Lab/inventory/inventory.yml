@@ -1,0 +1,18 @@
+all:
+  children:
+    ci-cd:
+      hosts:
+        jenkins.bbtlab.com:
+        jkagent01.bbtlab.com:
+        jkagent02.bbtlab.com:
+    jenkins-agents:
+      hosts:
+        jkagent01.bbtlab.com:
+        jkagent02.bbtlab.com:
+    monitoring:
+      hosts:
+        prometheus.bbtlab.com:
+        grafana.bbtlab.com:
+    dnsserver:
+      hosts:
+        ns1.bbtlab.com:

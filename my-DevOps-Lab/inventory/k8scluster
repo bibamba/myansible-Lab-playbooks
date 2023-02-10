@@ -1,0 +1,8 @@
+[k8sCluster]
+controlplane.bbtlab.com
+node01.bbtlab.com
+node02.bbtlab.com
+
+[k8sworkers]
+node01.bbtlab.com
+node02.bbtlab.com
