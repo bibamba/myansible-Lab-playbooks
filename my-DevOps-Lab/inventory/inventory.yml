@@ -4,11 +4,9 @@ all:
       hosts:
         jenkins.bbtlab.com:
         jkagent01.bbtlab.com:
-        jkagent02.bbtlab.com:
     jenkins-agents:
       hosts:
         jkagent01.bbtlab.com:
-        jkagent02.bbtlab.com:
     monitoring:
       hosts:
         prometheus.bbtlab.com:
@@ -16,3 +14,6 @@ all:
     dnsserver:
       hosts:
         ns1.bbtlab.com:
+    certs-manager:
+      hosts:
+        vault.bbtlab.com:

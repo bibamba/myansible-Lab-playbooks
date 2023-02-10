@@ -1,7 +1,7 @@
 [k8sCluster]
-controlplane.bbtlab.com
-node01.bbtlab.com
-node02.bbtlab.com
+controlplane.bbtlab.com       ansible_connection=ssh     ansible_user=maxime 
+node01.bbtlab.com             ansible_connection=ssh     ansible_user=maxime
+node02.bbtlab.com             ansible_connection=ssh     ansible_user=maxime
 
 [k8sworkers]
 node01.bbtlab.com
