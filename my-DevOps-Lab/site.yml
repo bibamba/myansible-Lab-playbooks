@@ -1,0 +1,8 @@
+---
+- name: Configure node_exporter on Kubernetes Clusters nodes
+  hosts: k8sCluster
+  remote_user: root
+
+  tasks:
+  - name: Download Node exporter to Cluster nodes
+    ansible.builtin.apt:
