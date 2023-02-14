@@ -1,19 +1,38 @@
 ---
 # tasks file for role/node-exporter
 - name: check if node exporter exist
-  state:
+  ansible.builtin.stat:
     path: "{{ node_exporter_bin }}"
   register: _check_node_exporter_present
+
 - name: create node exporter user
-  user:
+  ansible.builtin.user:
     name: "{{ node_exporter_user }}"
     append: true
     shell: /usr/sbin/nologin
     system: true
     create_home: false
+
 - name: create node exporter config dir
-  file:
+  ansible.builtin.file:
     path: "{{ node_exporter_dir_conf }}"
     state: directory
     owner: "{{ node_exporter_user }}"
     group: "{{ node_exporter_group }}"
+
+- name: if node exporter exist get version
+  shell: "cat /etc/systemd/system/node_exporter.service | grep Version | sed s/'.*Version '//g"
+  when: __check_node_exporter_present.sat.exists == true
+  changed_when: false
+  register: __get_node_exporter_version
+
+- name: download and unzip node exporter if not exist
+  ansible.builtin.unarchive:
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+    dest: /tmp
+    remote_src: yes
+    validate_certs: no
+- name: move the binary to the final destination
+  ansible.builtin.copy:
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
+    dest: 
