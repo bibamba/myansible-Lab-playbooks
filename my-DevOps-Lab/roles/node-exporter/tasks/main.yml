@@ -1,9 +1,9 @@
 ---
 # tasks file for role/node-exporter
 - name: check if node exporter exist
-  ansible.builtin.stat:
+  stat:
     path: "{{ node_exporter_bin }}"
-  register: _check_node_exporter_present
+  register: __check_node_exporter_present
 
 - name: create node exporter user
   ansible.builtin.user:
@@ -62,3 +62,4 @@
     name: node_exporter
     state: started
     enabled: yes
+

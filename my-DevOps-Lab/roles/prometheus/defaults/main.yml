@@ -1,0 +1,3 @@
+---
+# defaults file for roles/prometheus
+grafana_admin_password: "lougrace"
