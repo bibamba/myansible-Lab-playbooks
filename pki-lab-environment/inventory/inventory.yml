@@ -1,0 +1,5 @@
+all:
+  children:
+    ca-server:
+      hosts:
+        ca.bbtlab.com:
