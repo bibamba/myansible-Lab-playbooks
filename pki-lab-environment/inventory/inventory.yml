@@ -3,3 +3,9 @@ all:
     ca-server:
       hosts:
         ca.bbtlab.com:
+    databases:
+      hosts:
+        database.bbtlab.com:
+    webservers:
+      hosts:
+        webnginx.bbtlab.com:

@@ -1,0 +1,30 @@
+---
+# tasks file for role/nginx-server
+- name: Create a server blocks directory
+  ansible.builtin.file:
+    path: "{{ server_block_dir_conf }}"
+    state: directory
+    owner: "{{ current_user }}"
+    group: "{{ current_user_group }}"
+
+- name: Load the configuration file to nginx server
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ server_block_dir_conf }}/index.html"
+    owner: "{{ current_user }}"
+    group: "{{ current_user_group }}"
+    mode: 0755
+
+- name: Load server block
+  ansible.builtin.template:
+    src: webnginx.bbtlab.conf.j2
+    dest: /etc/nginx/conf.d/webnginx.bbtlab.conf
+
+- name: Restart nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+
+- name: Allow custom config root to be served as HTTP content
+  ansible.builtin.shell:
+    cmd: chcon -vR system_u:object_r:httpd_sys_content_t:s0 /var/www/webnginx.bbtlab/

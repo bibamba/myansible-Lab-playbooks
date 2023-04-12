@@ -1,0 +1,6 @@
+---
+# handlers file for role/nginx-webserver
+- name: Restart nginx
+  ansible.builtin.systemd: 
+    name: nginx
+    state: restarted

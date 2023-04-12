@@ -1,0 +1,5 @@
+---
+# defaults file for role/nginx-webserver
+server_block_dir_conf: /var/www/webnginx.bbtlab/html
+current_user: servuser
+current_user_group: servuser
