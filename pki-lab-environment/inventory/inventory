@@ -1,0 +1,5 @@
+[databases]
+database.bbtlab.com   ansible_connection=ssh  ansible_user=dbuser  ansible_password=bbtdblab23
+
+[webservers]
+webnginx.bbtlab.com   ansible_connection=ssh  ansible_user=servuser  ansible_password=bbtserver23     

@@ -5,7 +5,7 @@ server {
         root /var/www/webnginx.bbtlab/html;
         index index.html index.htm index.nginx-debian.html;
 
-        webserver webnginx.bbtlab.com www.webnginx.bbtlab.com;
+        server_name webnginx.bbtlab.com www.webnginx.bbtlab.com;
 
         location / {
                 try_files $uri $uri/ =404;

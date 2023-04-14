@@ -24,7 +24,3 @@
   ansible.builtin.systemd:
     name: nginx
     state: restarted
-
-- name: Allow custom config root to be served as HTTP content
-  ansible.builtin.shell:
-    cmd: chcon -vR system_u:object_r:httpd_sys_content_t:s0 /var/www/webnginx.bbtlab/

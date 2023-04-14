@@ -1,0 +1,6 @@
+- name: Configure nginx server
+  hosts: webservers
+  remote_user: servuser
+  become: true
+  roles:
+    - role: './roles/nginx-webserver'
